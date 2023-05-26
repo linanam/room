@@ -1,0 +1,467 @@
+/* Font */
+@font-face {
+    font-family: LeagueSpartan;
+    src: url(./font/LeagueSpartan-Medium.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: LeagueSpartan;
+    src: url(./font/LeagueSpartan-SemiBold.ttf);
+    font-weight: 600;
+}
+@font-face {
+    font-family: LeagueSpartan;
+    src: url(./font/LeagueSpartan-Bold.ttf);
+    font-weight: 700;
+}
+/* Colors */
+/* Typography */
+.mixin-vertical-centered {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.mixin-flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mixin-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+nav {
+    transition: all 0.3s ease-in-out;
+}
+.navigationContainer {
+    position: relative;
+    min-width: 60px;
+    min-height: 60px;
+}
+.navIcon {
+    cursor: pointer;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    left: 34px;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    z-index: calc(100 - 1);
+}
+.navIcon .line {
+    background: hsl(0, 0%, 100%);
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+.navIcon .line:nth-child(1) {
+    transform: translate(0, calc(-50% + 6px));
+}
+.navIcon .line:nth-child(2) {
+    transform: translate(0, -50%);
+}
+.navIcon .line:nth-child(3) {
+    transform: translate(0, calc(-50% - 6px));
+}
+nav {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    height: 100%;
+    position: fixed;
+    left: -120%;
+    top: 0;
+    width: 0;
+    z-index: calc(100 - 2);
+}
+.navList {
+    background: hsl(0, 0%, 100%);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 110px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: calc(100 - 2);
+}
+.navList a {
+    color: hsl(0, 0%, 0%);
+    font-weight: 700;
+    padding: 0 13px;
+    text-decoration: none;
+    text-transform: lowercase;
+}
+.navList a:last-child {
+    padding-right: 23px;
+}
+.checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0;
+    display: block;
+    height: 60px;
+    width: 60px;
+    opacity: 0;
+    z-index: 100;
+}
+.checkbox:checked ~ .navIcon .line {
+    background: hsl(0, 0%, 63%);
+}
+.checkbox:checked ~ .navIcon .line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+}
+.checkbox:checked ~ .navIcon .line:nth-child(2) {
+    transform: scaleY(0);
+}
+.checkbox:checked ~ .navIcon .line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 50%;
+}
+.checkbox:checked ~ nav {
+    left: 0;
+    width: 100%;
+}
+@media only screen and (min-width: 748px) {
+    .checkbox,
+    .navIcon,
+    nav a::before {
+        display: none;
+    }
+    .navigationContainer {
+        order: 2;
+    }
+    nav,
+    .navList {
+        background: none;
+        position: static;
+        width: auto;
+    }
+    .navList a {
+        color: hsl(0, 0%, 100%);
+        font-weight: 500;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    .navList a {
+        padding: 0 14px;
+    }
+}
+* {
+    box-sizing: border-box;
+}
+.slideshowContainer {
+    position: relative;
+    margin: auto;
+}
+.slide {
+    display: none;
+    margin: 0 auto;
+}
+.slide.active {
+    display: block;
+}
+.slide .img {
+    height: 360px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.slide .text {
+    min-height: 270px;
+}
+.slideWrap {
+    min-height: 360px;
+    padding: 360px 27px 61px 32px;
+    position: relative;
+    width: 100%;
+}
+.slide-01 .img {
+    background: url(./assets/images/mobile-image-hero-1.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.slide-02 .img {
+    background: url(./assets/images/mobile-image-hero-2.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.slide-03 .img {
+    background: url(./assets/images/mobile-image-hero-3.jpg) no-repeat 50% 50%;
+    background-size: cover;
+}
+.slideNav {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: calc(360px - 56px);
+}
+.slideNav .item {
+    background: hsl(0, 0%, 0%) url(./assets/images/icon-angle-left.svg) 50% 50% no-repeat;
+    background-size: 10px 17px;
+    color: white;
+    cursor: pointer;
+    height: 56px;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slideNav .item:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.slideNav .next {
+    background-image: url(./assets/images/icon-angle-right.svg);
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@media only screen and (min-width: 748px) {
+    .slide-01 .img {
+        background: url(./assets/images/desktop-image-hero-1.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+    .slide-02 .img {
+        background: url(./assets/images/desktop-image-hero-2.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+    .slide-03 .img {
+        background: url(./assets/images/desktop-image-hero-3.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .slideWrap {
+        display: flex;
+        height: 534px;
+        padding: 0;
+    }
+    .slideWrap .img {
+        height: 100%;
+        flex-basis: 58%;
+        position: static;
+        width: 58%;
+    }
+    .slideWrap .text {
+        flex-basis: 42%;
+        padding: 0 90px 0 100px;
+    }
+    .slideNav {
+        left: 58%;
+        bottom: 0;
+        right: auto;
+        top: auto;
+    }
+    .slideNav .item {
+        background-size: 13px 25px;
+        height: 80px;
+        width: 80px;
+    }
+    .slide-01 .img {
+        background: url(./assets/images/desktop-image-hero-1.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+    .slide-02 .img {
+        background: url(./assets/images/desktop-image-hero-2.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+    .slide-03 .img {
+        background: url(./assets/images/desktop-image-hero-3.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+}
+* {
+    margin: 0;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: LeagueSpartan, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 375px;
+}
+.main {
+    flex: 1 0 auto;
+    position: relative;
+}
+header {
+    color: hsl(0, 0%, 100%);
+    height: 110px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.logo {
+    flex: auto 1;
+    font-size: 30px;
+    padding: 40px 57px 0 0;
+    text-align: center;
+}
+h1,
+h2 {
+    font-size: 41px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin: 58px 0 10px;
+}
+h3 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    line-height: 1;
+    margin: 53px 0 20px;
+    text-transform: uppercase;
+}
+p {
+    color: hsl(0, 0%, 63%);
+    line-height: 1.4;
+    margin: 13px 0;
+}
+.btn {
+    border: 0;
+    color: hsl(0, 0%, 27%);
+    display: inline-block;
+    font-weight: 500;
+    font-size: 15px;
+    height: 40px;
+    line-height: 42px;
+    letter-spacing: 12px;
+    margin-top: 13px;
+    padding-right: 62px;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.btn::before,
+.btn::after {
+    background: url(./assets/images/icon-arrow-hover.svg) no-repeat;
+    content: "";
+    color: hsl(0, 0%, 0%);
+    height: 12px;
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0;
+}
+
+.btn::before,
+.btn:hover::after {
+    opacity: 0;
+}
+
+.btn::after {
+    background-image: url(./assets/images/icon-arrow.svg);
+}
+.btn:hover {
+    color: hsl(0, 0%, 63%);
+}
+.btn:hover::before {
+    opacity: 1;
+}
+.about_wrap {
+    padding-top: 238px;
+    position: relative;
+}
+.about_wrap .about_img {
+    background: url(./assets/images/image-about-dark.jpg) no-repeat 50% 0;
+    background-size: cover;
+    height: 238px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.about_wrap > * {
+    padding: 0 27px 0 32px;
+}
+.about_img_additional {
+    background: url(./assets/images/image-about-light.jpg) no-repeat 50% 50%;
+    background-size: cover;
+    flex-shrink: 0;
+    height: 266px;
+    margin-top: 28px;
+}
+@media only screen and (min-width: 748px) {
+    header {
+        left: 59px;
+        top: 15px;
+        width: 58%;
+    }
+    .logo {
+        flex: auto 0;
+        order: 1;
+        padding-right: 42px;
+    }
+    h3 {
+        font-size: 17px;
+        margin: 67px 0 15px;
+    }
+    .btn {
+        height: 33px;
+        line-height: 35px;
+        letter-spacing: 14px;
+        margin-top: 0;
+        padding-right: 56px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .about_wrap {
+        display: flex;
+        padding-top: 0;
+    }
+    .about_wrap > div {
+        flex: 40%;
+        padding-left: 45px;
+    }
+    .about_wrap .about_img,
+    .about_wrap .about_img_additional {
+        height: 265px;
+    }
+    .about_wrap .about_img {
+        flex-basis: 29%;
+        padding: 0;
+        position: static;
+    }
+    .about_wrap .about_img_additional {
+        flex-basis: 31%;
+        margin: 0;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    h1,
+    h2 {
+        font-size: 49px;
+        margin: 120px 0 20px;
+    }
+}

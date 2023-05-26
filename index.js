@@ -11,6 +11,15 @@
             nextSlide(i);
         });
 
+        document.addEventListener('keydown', (event) => {
+            let key = event.key,
+                i = 1;
+            if (key === 'ArrowLeft') {
+                i = -1;
+            }
+            nextSlide(i);
+        }, false);
+
         showSlides(slideIndex);
     });
 
